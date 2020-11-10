@@ -5,14 +5,19 @@
 // 
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var webKitView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        guard let url = URL(string: "https://www.indiepost.co.kr") else { return }
+        let request = URLRequest(url: url)
+        webKitView.load(request)
     }
-
 
 }
 
