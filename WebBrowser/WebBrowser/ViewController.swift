@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        setWebView()
+        setUpWebView()
     }
     
     func setUpUI() {
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         webView.navigationDelegate = self
     }
     
-    func setWebView() {
+    func setUpWebView() {
         let startUrl = "https://www.indiepost.co.kr"
         requestURL(urlString: startUrl)
     }
