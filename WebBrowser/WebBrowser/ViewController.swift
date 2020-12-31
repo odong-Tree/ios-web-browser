@@ -7,7 +7,6 @@
 import UIKit
 import WebKit
 
-// TODO: add indicator
 class ViewController: UIViewController {
     
     @IBOutlet weak var webView: WKWebView!
@@ -19,6 +18,7 @@ class ViewController: UIViewController {
         setUpWebView()
     }
     
+    // MARK: - setup
     func setUpUI() {
         searchBar.delegate = self
         webView.navigationDelegate = self
@@ -26,16 +26,19 @@ class ViewController: UIViewController {
     
     func setUpWebView() {
         let startUrl = "https://www.indiepost.co.kr"
-        requestURL(urlString: startUrl)
+        do {
+            try requestURL(startUrl)
+        } catch {
+            
+        }
     }
     
-    func requestURL(urlString: String) {
+    func requestURL(_ urlString: String) throws {
         guard let url = URL(string: urlString) else {
-            return showErrorAlert(error: .convertUrl)
+            throw WebError.converUrl
         }
         
         let request = URLRequest(url: url)
-        print(request)
         webView.load(request)
     }
     
