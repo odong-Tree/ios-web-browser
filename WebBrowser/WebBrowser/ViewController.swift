@@ -63,25 +63,29 @@ class ViewController: UIViewController {
     }
     
     @IBAction func movePage() {
-        self.searchBar.endEditing(true)
-        guard let urlString = searchBar.text,
-              urlString.isNotEmpty else {
-            return self.showError(WebError.emptyAddress)
+        do {
+            self.searchBar.endEditing(true)
+            guard let urlString = searchBar.text,
+                  urlString.isNotEmpty else {
+                throw WebError.emptyAddress
+            }
+            
+            let requestUrlString: String
+            if isNotUrl(origin: urlString) {
+                requestUrlString = makeUrlString(originString: urlString)
+            }
+            else {
+                requestUrlString = urlString
+            }
+            
+            guard checkUrlValidation(urlString: requestUrlString) else {
+                throw WebError.validateAddress
+            }
+            
+            try requestURL(requestUrlString)
+        } catch {
+            self.showError(error)
         }
-        
-        let requestUrlString: String
-        if isNotUrl(origin: urlString) {
-            requestUrlString = makeUrlString(originString: urlString)
-        }
-        else {
-            requestUrlString = urlString
-        }
-        
-        guard checkUrlValidation(urlString: requestUrlString) else {
-            return showError(WebError.validateAddress)
-        }
-        
-        requestURL(requestUrlString)
     }
 }
 
