@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2836AF33259DB494001D5850 /* WebError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836AF32259DB494001D5850 /* WebError.swift */; };
 		28423D6F255CF55600CD090D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28423D6E255CF55600CD090D /* StringExtension.swift */; };
 		C7ABA119254EB0CA00B2367D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ABA118254EB0CA00B2367D /* AppDelegate.swift */; };
 		C7ABA11B254EB0CA00B2367D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ABA11A254EB0CA00B2367D /* SceneDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2836AF32259DB494001D5850 /* WebError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebError.swift; sourceTree = "<group>"; };
 		28423D6E255CF55600CD090D /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		C7ABA115254EB0CA00B2367D /* WebBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7ABA118254EB0CA00B2367D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2836AF31259DB48A001D5850 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				2836AF32259DB494001D5850 /* WebError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		28423D6D255CF54300CD090D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +76,7 @@
 		C7ABA117254EB0CA00B2367D /* WebBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				2836AF31259DB48A001D5850 /* Error */,
 				28423D6D255CF54300CD090D /* Extension */,
 				C7ABA118254EB0CA00B2367D /* AppDelegate.swift */,
 				C7ABA11A254EB0CA00B2367D /* SceneDelegate.swift */,
@@ -149,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28423D6F255CF55600CD090D /* StringExtension.swift in Sources */,
+				2836AF33259DB494001D5850 /* WebError.swift in Sources */,
 				C7ABA11D254EB0CA00B2367D /* ViewController.swift in Sources */,
 				C7ABA119254EB0CA00B2367D /* AppDelegate.swift in Sources */,
 				C7ABA11B254EB0CA00B2367D /* SceneDelegate.swift in Sources */,
