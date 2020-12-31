@@ -45,21 +45,17 @@ class ViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func goBack() {
-        if webView.canGoBack {
-            webView.goBack()
+        guard webView.canGoBack else {
+            self.showError(WebError.moveBack)
         }
-        else {
-            showErrorAlert(error: .moveBack)
-        }
+        webView.goBack()
     }
     
     @IBAction func goForward() {
-        if webView.canGoForward {
-            webView.goForward()
+        guard webView.canGoForward else {
+            self.showError(WebError.moveForward)
         }
-        else {
-            showErrorAlert(error: .moveForward)
-        }
+        webView.goForward()
     }
     
     @IBAction func reloadPage() {
