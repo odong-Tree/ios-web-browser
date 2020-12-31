@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         webView.load(request)
     }
     
+    // MARK: - IBActions
     @IBAction func goBack() {
         if webView.canGoBack {
             webView.goBack()
