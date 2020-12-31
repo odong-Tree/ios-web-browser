@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: - request url
     func requestURL(_ urlString: String) throws {
         guard let url = URL(string: urlString) else {
             throw WebError.converUrl
