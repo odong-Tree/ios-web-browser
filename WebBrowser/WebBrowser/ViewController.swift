@@ -15,11 +15,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setUpUI()
         setWebView()
     }
     
-    func setUI() {
+    func setUpUI() {
         searchBar.delegate = self
         webView.navigationDelegate = self
     }
