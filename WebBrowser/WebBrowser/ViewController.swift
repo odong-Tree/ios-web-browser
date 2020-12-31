@@ -19,12 +19,12 @@ class ViewController: UIViewController {
     }
     
     // MARK: - setup
-    func setUpUI() {
+    private func setUpUI() {
         searchBar.delegate = self
         webView.navigationDelegate = self
     }
     
-    func setUpWebView() {
+    private func setUpWebView() {
         let startUrl = "https://www.indiepost.co.kr"
         do {
             try requestURL(startUrl)
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: - request url
-    func requestURL(_ urlString: String) throws {
+    private func requestURL(_ urlString: String) throws {
         guard let url = URL(string: urlString) else {
             throw WebError.converUrl
         }
@@ -46,14 +46,14 @@ class ViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func goBack() {
         guard webView.canGoBack else {
-            self.showError(WebError.moveBack)
+            return self.showError(WebError.moveBack)
         }
         webView.goBack()
     }
     
     @IBAction func goForward() {
         guard webView.canGoForward else {
-            self.showError(WebError.moveForward)
+            return self.showError(WebError.moveForward)
         }
         webView.goForward()
     }
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         self.searchBar.endEditing(true)
         guard let urlString = searchBar.text,
               urlString.isNotEmpty else {
-            return showErrorAlert(error: .emptyAddress)
+            return self.showError(WebError.emptyAddress)
         }
         
         let requestUrlString: String
@@ -78,10 +78,10 @@ class ViewController: UIViewController {
         }
         
         guard checkUrlValidation(urlString: requestUrlString) else {
-            return showErrorAlert(error: .validateAddress)
+            return showError(WebError.validateAddress)
         }
         
-        requestURL(urlString: requestUrlString)
+        requestURL(requestUrlString)
     }
 }
 
@@ -94,14 +94,14 @@ extension ViewController : UISearchBarDelegate {
 extension ViewController : WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        
-        guard let urlString = webView.url?.absoluteString else {
-            return showErrorAlert(error: .loadPage)
+        do {
+            guard let urlString = webView.url?.absoluteString else {
+                throw WebError.loadPage
+            }
+            try self.requestURL(urlString)
+        } catch {
+            self.showError(error)
         }
-        
-        debugPrint("redirect url: \(urlString)")
-        
-        self.requestURL(urlString: urlString)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
