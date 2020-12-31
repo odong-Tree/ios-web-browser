@@ -14,6 +14,7 @@ enum WebError: Error {
     case loadPage
     case emptyAddress
     case validateAddress
+    case unknow
 }
 
 extension WebError: LocalizedError {
@@ -31,6 +32,8 @@ extension WebError: LocalizedError {
             return "이동하고 싶은 URL을 입력해주세요."
         case .validateAddress:
             return "입력한 주소가 올바른 형태가 아닙니다."
+        case .unknow:
+            return "알수 없는 오류가 발생했습니다.\n잠시 후 다시 시도해 주세요."
         }
     }
 }

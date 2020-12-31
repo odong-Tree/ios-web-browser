@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         do {
             try requestURL(startUrl)
         } catch {
-            
+            self.showError(error)
         }
     }
     
@@ -40,13 +40,6 @@ class ViewController: UIViewController {
         
         let request = URLRequest(url: url)
         webView.load(request)
-    }
-    
-    func showErrorAlert(error: ErrorMessage) {
-        let alert = UIAlertController(title: nil, message: error.rawValue, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-        alert.addAction(confirmAction)
-        present(alert, animated: false, completion: nil)
     }
     
     @IBAction func goBack() {
